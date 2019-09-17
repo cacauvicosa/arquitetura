@@ -1,0 +1,45 @@
+- MicroPython Basics: Load Files & Run Code guide: https://learn.adafruit.com/micropytho...
+- MicroPython Basics: What is MicroPython guide (see this for links to other MicroPython Basics guides): https://learn.adafruit.com/micropytho...
+- Adafruit MicroPython tool: https://github.com/adafruit/ampy
+- Atom text editor: https://atom.io/
+
+
+Usage: ampy [OPTIONS] COMMAND [ARGS]...
+
+  ampy - Adafruit MicroPython Tool
+
+  Ampy is a tool to control MicroPython boards over a serial connection.
+  Using ampy you can manipulate files on the board's internal filesystem and
+  even run scripts.
+
+Options:
+  -p, --port PORT  Name of serial port for connected board.  [required]
+  -b, --baud BAUD  Baud rate for the serial connection. (default 115200)
+  -d, --delay DELAY Delay in seconds before entering RAW MODE (default 0)
+  --help           Show this message and exit.
+
+Commands:
+  get  Retrieve a file from the board.
+  ls   List contents of a directory on the board.
+  put  Put a file on the board.
+  rm   Remove a file from the board.
+  run  Run a script and print its output.
+
+
+Seguir o tutorial em https://learn.adafruit.com/micropython-basics-load-files-and-run-code/overview
+
+Comandos
+
+ampy --port /dev/tty.SLAB_USBtoUART ls --help
+listar os arquivos no diretorio da placa e como usar o comando ls
+
+desligar o DEBUG - disable esp8266 debug
+
+ampy -p ... run test.py (executa....)
+
+
+
+
+ampy --port /dev/ttyUSB0  run neo8fadeINPUT.py
+ampy --port /dev/ttyUSB0  run neo7fade.py
+ampy --port /dev/ttyUSB0  run rainbow.py 

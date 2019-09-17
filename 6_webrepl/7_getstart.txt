@@ -1,0 +1,16 @@
+Webrepl
+https://github.com/micropython/webrepl 
+
+Para acionar
+
+
+pode usar o picocom
+
+picocom /dev/ttyUSB0 -b115200
+import webrepl_setup
+
+a senha do wifi é micropythoN, ja a senha dentro da janela do navegador ao clicar
+no botao será definida por voce, pode ser por exemplo 12345678
+
+executar comandos como exemplo
+

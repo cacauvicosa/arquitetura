@@ -1,0 +1,9 @@
+Podemos enviar um arquivo e executar dentro do webrepl
+
+import os
+os.listdir()
+
+depois de verificar que seu comando está la, basta executar
+import seucomando
+para parar pode usar ctrl-C, porém tera que reset o nodemcu para executar novamente
+

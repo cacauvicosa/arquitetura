@@ -1,0 +1,1 @@
+ampy --port /dev/ttyUSB0  run seuprograma.py
