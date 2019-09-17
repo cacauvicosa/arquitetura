@@ -1,0 +1,19 @@
+Primeiro forma que veremos para comunicar com o esp8266 sera através do terminal.
+Pode comecar a usar com o REPL (Read Evaluate Print Loop). Para usar bastar "picocom /dev/ttyUSB0 -b115200", o picocom deve estar
+instalado e voce deve saber em qual porta conectou o Esp8266. 
+
+Ao digitar o comando picocom no terminal, inicia a sessão com o esp8266
+
+picocom /dev/ttyUSB0 -b115200
+
+picocom v2.2
+Para sair Ctrl+A+X junto...
+
+Digitar os comandos abaixo para testar
+
+1+2
+print ('Ola') 
+2**34
+
+As ações estão sendo executadas no placa esp8266.
+

@@ -1,0 +1,7 @@
+1. Baixar o firmware do link http://micropython.org/download#esp8266
+2. Install o esptool do git https://github.com/espressif/esptool/ ou com o comando "pip install esptool"
+3. Apagar a flash do esp8266 esptool.py --port /dev/ttyUSB0 erase_flash
+4. Gravar o firmware 
+esptool.py --port /dev/ttyUSB0 --baud 460800 write_flash --flash_size=detect 0 esp8266-20170108-v1.8.7.bin
+
+O arquivo .bin pode ser outro, depende da versao que voce baixou.

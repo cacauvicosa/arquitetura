@@ -1,0 +1,30 @@
+O esp8266 tem o led conectado ao pino D4 que corresponde ao numero 2.
+Para acessar os pinos temos que importar uma biblioteca.
+
+vamos fazer agora um exemplo simples de acender o LED da placa. Depois iremos fazer o blink (piscar o led).
+O led da placa está conectado ao pino 2 do NodeMCU, com um resistor de Pull-Up, assim, 
+o pino 2 deve fornecer Ground (off) para acender e on para apagar. A biblioteca machine é para ter acesso aos pinos e
+outros recursos do hardware do NodeMCU.
+
+import machine
+pin = machine.Pin(2, machine.Pin.OUT)
+pin.on()
+pin.off()
+
+
+O terminal pode usar as "setas" para histórico, tab para completar os comandos, identação para funções. Por exemplo,
+podemos fazer o blink usando a função
+
+def toggle(p):
+  p.value(not p.value())
+
+depois chamar
+toggle(pin)
+toggle(pin)
+
+Para blink fazer 
+import time
+while True:
+toggle(pin)
+time.sleep_ms(500)
+
