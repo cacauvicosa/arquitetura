@@ -13,21 +13,21 @@ def zigzag():
 		fita[i] = (150,150,0)
 		fita[5-i]= (0,150,150)
 		fita.write()	
-		time.sleep_ms(200)	
+		time.sleep_ms(20)	
 		fita[i] = (0,0,0)
 		fita[5-i]= (0,0,0)
 		fita.write()		
-		time.sleep_ms(200)	
+		time.sleep_ms(20)	
 
 	for i in range(5):
 		fita[5-i] = (150,150,0)
 		fita[i]= (0,150,150)
 		fita.write()	
-		time.sleep_ms(500)	
+		time.sleep_ms(50)	
 		fita[i] = (0,0,0)
 		fita[5-i]= (0,0,0)
 		fita.write()		
-		time.sleep_ms(500)	
+		time.sleep_ms(50)	
 
 
 

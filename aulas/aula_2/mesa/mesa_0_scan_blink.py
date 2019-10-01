@@ -6,7 +6,7 @@ import time
 def blink_pixel(r,g,b,p):
 	np[p] = (r,g,b)
 	np.write()
-        time.sleep_ms(5)
+        time.sleep_ms(50)
 	np[p] = (0,0,0)
 	np.write()
 	
@@ -14,7 +14,7 @@ def blink_pixel(r,g,b,p):
 pin = Pin(0, Pin.OUT)   # set GPIO0 or D3 in NodeMCU to output to drive NeoPixels
 np = NeoPixel(pin, 144)   # create NeoPixel driver on GPIO0 for 300 pixels
 for i in range(144):
-	blink_pixel(50,50,0,i)
+	blink_pixel(0,100,100,i)
 
 
 
