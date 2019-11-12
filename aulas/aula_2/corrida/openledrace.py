@@ -62,13 +62,13 @@ while True:
 	if flag_sw1==0 and PIN_P1.value()==1: 
 		flag_sw1=1  # Prepara o botao, agora esta desapertado
 
-	speed1 = speed1 - FRICTION*speed1*kf 
+	speed1 = speed1 - 2*FRICTION*speed1*kf 
 	if speed1<0: 
 		speed1=0
 
 	if flag_sw2==1 and  PIN_P2.value()==0:
 		flag_sw2=0  # para contar pressionou tem que mudar de 1 para 0
-		speed2 = speed2 + 2*ACEL # se vc pressionou, aumenta a velocidade
+		speed2 = speed2 + ACEL # se vc pressionou, aumenta a velocidade
 
 	if flag_sw2==0 and PIN_P2.value()==1: 
 		flag_sw2=1  # Prepara o botao, agora esta desapertado
