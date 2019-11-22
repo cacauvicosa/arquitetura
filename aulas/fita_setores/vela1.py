@@ -37,15 +37,15 @@ def Blend(color1, color2):
 	b2 = color2[2]
 	if (r1+r2>255):
 		r1 = 255
-	else 
+	else: 
 		r1=r1+r2
 	if (g1+g2>255):
 		g1 = 255
-	else 
+	else: 
 		g1=g1+g2
 	if (b1+b2>255):
 		b1 = 255
-	else 
+	else: 
 		b1=b1+b2
 
 	return (r1,g1,b1)

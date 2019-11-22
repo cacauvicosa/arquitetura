@@ -14,11 +14,12 @@ off_color    =  (  0,  0,  0)
 
 
 def Draw(fita,CNT,fire_color,off_color):
+        L = [23,56,12,89,20,78,30,2,35,50,23,76,2,9,60,18,30,2,35,50,23,46,72,89,60,38,80,20,5,52]
 	Clear(fita,CNT)
 	for i in range(CNT):
   		AddColor(fita,i, fire_color)
-		r = random.randrange(80)
-  		diff_color = ( r, r/2, r/2)
+		r = L[i]
+  		diff_color = ( r, r//2, r//2)
   		SubstractColor(fita,i, diff_color)
 	fita.write()
 
@@ -37,15 +38,15 @@ def Blend(color1, color2):
 	b2 = color2[2]
 	if (r1+r2>255):
 		r1 = 255
-	else 
+	else: 
 		r1=r1+r2
 	if (g1+g2>255):
 		g1 = 255
-	else 
+	else: 
 		g1=g1+g2
 	if (b1+b2>255):
 		b1 = 255
-	else 
+	else: 
 		b1=b1+b2
 
 	return (r1,g1,b1)
@@ -72,9 +73,9 @@ def Clear(fita,CNT):
 	for i in range(CNT):
 		fita[i] = (0,0,0)	
 	fita.write()
-}
 
-for i in range(10):
+L = [23,56,12,89,20,78,30,2,35,50,23,76,2,9,60,18,30,2,35,50,23,46,72,89,60,38,80,20,5,52]	
+for i in range(30):
 	Draw(fita,CNT,fire_color,off_color)
-	time.sleep_ms(50+random.randrange(80))
+	time.sleep_ms(50+L[i])
 
