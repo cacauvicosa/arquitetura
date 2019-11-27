@@ -4,20 +4,33 @@
 // Update these with values suitable for your network.
 
 #include <Adafruit_NeoPixel.h>
+/** IMPORTANTE
+ *  pino nodemcu D3 ou gp0 
+ *  Fita tem 300 leds
+ */
 #define LED_PIN    D3
 #define LED_COUNT 300
 Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
 
+/** IMPORTANTE
+ *  variaveis globais para comunicar com o MQTT
+*/
 int inicio, fim;
 uint32_t cor;
 boolean grava=false;
 
 
+/** IMPORTANTE
+ *  rede wifi
+*/
 //const char* ssid = "3gCacau";
 //const char* password = "arduino351";
 const char* ssid = "dlink-602C";
 const char* password = "gitgt24651";
 
+/** IMPORTANTE
+ *  servidor de mqtt
+*/
 const char* mqtt_server = "broker.mqtt-dashboard.com";
 
 WiFiClient espClient;
@@ -86,12 +99,17 @@ void reconnect() {
       // Once connected, publish an announcement...
       client.publish("fita", "hello world");
       // ... and resubscribe
+/** IMPORTANTE
+ *  rede wifi
+*/
       client.subscribe("fita/inicio");
       client.subscribe("fita/fim");
       client.subscribe("fita/cor");
       client.subscribe("fita/grava");
       client.subscribe("fita/apaga");
       client.subscribe("fita/fire"); 
+      client.subscribe("fita/cores"); 
+
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -132,6 +150,31 @@ void apaga() {
   }
   strip.show();
 }
+
+
+void rainbow(int wait) {
+  // Hue of first pixel runs 5 complete loops through the color wheel.
+  // Color wheel has a range of 65536 but it's OK if we roll over, so
+  // just count from 0 to 5*65536. Adding 256 to firstPixelHue each time
+  // means we'll make 5*65536/256 = 1280 passes through this outer loop:
+  for(long firstPixelHue = 0; firstPixelHue < 5*65536; firstPixelHue += 256) {
+    for(int i=0; i<strip.numPixels(); i++) { // For each pixel in strip...
+      // Offset pixel hue by an amount to make one full revolution of the
+      // color wheel (range of 65536) along the length of the strip
+      // (strip.numPixels() steps):
+      int pixelHue = firstPixelHue + (i * 65536L / strip.numPixels());
+      // strip.ColorHSV() can take 1 or 3 arguments: a hue (0 to 65535) or
+      // optionally add saturation and value (brightness) (each 0 to 255).
+      // Here we're using just the single-argument hue variant. The result
+      // is passed through strip.gamma32() to provide 'truer' colors
+      // before assigning to each pixel:
+      strip.setPixelColor(i, strip.gamma32(strip.ColorHSV(pixelHue)));
+    }
+    strip.show(); // Update strip with new contents
+    delay(wait);  // Pause for a moment
+  }
+}
+
 
 
 ///
@@ -275,7 +318,9 @@ void loop() {
   
 }
 
-
+/** IMPORTANTE
+ *  inserir as acoes
+*/
 void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("Message arrived [");
   String Topic(topic);
@@ -301,16 +346,22 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if ( Topic.equals("fita/grava") ) {
     if ( (char) payload[0] == '1') grava = true; // converter caracteres em um numero inteiro 
     Serial.println("grava");
-    colorWipe(cor,10);
+    colorWipe(cor,10); // chamar a funcao para gravar, 10ms
+    // percorrer inicio ao fim, grava cor.
   }
   if ( Topic.equals("fita/apaga") ) {
-    Serial.println("apaga");
-    apaga();
+    Serial.println("apaga");  
+    apaga();  // percorrer Inicio -> Fim e apaga
   }
 
   if ( Topic.equals("fita/fire") ) {
     Serial.println("fire");
     fogo(5); // time in seconds
+  }
+
+  if ( Topic.equals("fita/cores") ) {
+    Serial.println("cores");
+    rainbow(5); // time in milliseconds
   }
 
 }
