@@ -1,0 +1,8 @@
+Link para video com as explicaçoes.  https://youtu.be/H6X79Eg41Q8 
+
+Instalar a IDE do Arduino. Ir em file->preferences para adicionar board manager para ESP8266
+
+Ir no tools -> board manager para pesquisar por NodeMcu e instalar as placas.
+Selecionar o NodeMCU 1.0 (12E)
+
+Adicionar a biblioteca da Adafruit para neopixel e para MQTT com pubsubscribe.
