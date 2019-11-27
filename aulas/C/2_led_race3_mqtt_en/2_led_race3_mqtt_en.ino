@@ -27,9 +27,9 @@
 
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
+const char* ssid = "sua rede WIFI";
+const char* password = "sua senha";
 
-const char* ssid = "dlink-602C";
-const char* password = "gitgt24651";
 
 const char* mqtt_server = "broker.mqtt-dashboard.com";
 #define GREENCAR  "fita/carroverde" // MQTT topic for Green Car Push Button

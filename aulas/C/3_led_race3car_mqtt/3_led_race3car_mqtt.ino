@@ -26,10 +26,8 @@
 
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
-const char* ssid = "3gCacau";
-const char* password = "arduino351";
-//const char* ssid = "dlink-602C";
-//const char* password = "gitgt24651";
+const char* ssid = "sua rede WIFI";
+const char* password = "sua senha";
 
 const char* mqtt_server = "broker.mqtt-dashboard.com";
 
